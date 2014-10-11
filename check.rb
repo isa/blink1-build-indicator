@@ -21,8 +21,7 @@ TEAMCITY_HOST = ARGV.first
 BUILD_IDS = ARGV.drop(1)
 
 BUILD_IDS.each do |build_id|
-   # url = "#{TEAMCITY_HOST}/guestAuth/app/rest/buildTypes/id:#{build_id}/builds"
-   url = "#{TEAMCITY_HOST}/#{build_id}.xml"
+   url = "#{TEAMCITY_HOST}/guestAuth/app/rest/buildTypes/id:#{build_id}/builds"
    response = RestClient.get url rescue begin
                  puts "CI server is not responding!"
                  exit -2
