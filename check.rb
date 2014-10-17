@@ -14,6 +14,9 @@ indicator = "SUCCESS"
 
 if ARGV.length < 2
    puts "Usage: check.rb <TEAMCITY_HOST> [<BUILD_ID1> <BUILD_ID2 ..]"
+   Blink1.open do |blink|
+      blink.off
+   end
    exit -1
 end
 
@@ -29,6 +32,9 @@ BUILD_IDS.each do |build_id|
 
    if response.code != 200
       puts "Something wrong with your CI: #{url}!"
+      Blink1.open do |blink|
+         blink.off
+      end
       exit -3
    end
 
